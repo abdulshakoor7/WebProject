@@ -226,17 +226,16 @@
                         </div>
                     </div>
                     
-                    <div class="flex flex-wrap gap-4">
-                        <a href="#" class="bg-blue-500 text-white px-6 py-2 rounded-full hover:bg-blue-600 transition duration-300 flex items-center">
-                            <i class="fas fa-download mr-2"></i> Download CV
-                        </a>
-                        <a href="#contact" class="border-2 border-blue-500 text-blue-500 px-6 py-2 rounded-full hover:bg-blue-50 transition duration-300 flex items-center">
-                            <i class="fas fa-paper-plane mr-2"></i> Hire Me
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
+                    <div class="flex flex-wrap gap-8">
+    <a href="/ShakoorBaloch-CV.pdf" download class="bg-blue-500 text-white px-6 py-2 rounded-full hover:bg-blue-600 transition duration-300 flex items-center">
+        <i class="fas fa-download mr-2"></i> Download CV
+    </a>
+    
+    <a href="#contact" class="bg-green-500 text-white px-6 py-2 rounded-full hover:bg-gray-600 transition duration-300 flex items-center">
+        <i class="fas fa-envelope mr-2"></i> Hire Me
+    </a>
+</div>
+
     </section>
 
     <!-- Skills Section -->
@@ -615,13 +614,13 @@
 
     <script>
         // Mobile menu toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
         
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-        
+    const menuBtn = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
         // Close mobile menu when clicking on a link
         document.querySelectorAll('#mobile-menu a').forEach(link => {
             link.addEventListener('click', () => {
@@ -659,15 +658,26 @@
         window.addEventListener('load', animateOnScroll);
         
         // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
+        // Optional JS for scrollspy effect
+window.addEventListener('scroll', () => {
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-link');
+    let current = '';
+
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        if (pageYOffset >= sectionTop) {
+            current = section.getAttribute('id');
+        }
+    });
+
+    navLinks.forEach(link => {
+        link.classList.remove('text-blue-500');
+        if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('text-blue-500');
+        }
+    });
+});
         
         // Back to top button
         document.getElementById('back-to-top').addEventListener('click', () => {
