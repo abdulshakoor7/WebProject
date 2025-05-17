@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shakoor Baloch | Full Stack Developer Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        /* Custom animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .animate-fadeIn {
+            animation: fadeIn 1s ease-out forwards;
+        }
+        
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+        
+        .skill-bar {
+            transition: width 1.5s ease-out;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #3b82f6;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .delay-100 {
+            animation-delay: 100ms;
+        }
+        
+        .delay-200 {
+            animation-delay: 200ms;
+        }
+        
+        .delay-300 {
+            animation-delay: 300ms;
+        }
+        
+        .delay-400 {
+            animation-delay: 400ms;
+        }
+        
+        .delay-500 {
+            animation-delay: 500ms;
+        }
+        
+        /* Profile image styling */
+        .profile-img {
+            width: 250px;
+            height: 250px;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        @media (max-width: 768px) {
+            .profile-img {
+                width: 200px;
+                height: 200px;
+            }
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #3b82f6;
+            border-radius: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #2563eb;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white shadow-md z-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <a href="#" class="text-2xl font-bold text-blue-500">SB</a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link">Home</a>
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#skills" class="nav-link">Skills</a>
+                    <a href="#projects" class="nav-link">Projects</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </div>
+                <button class="md:hidden focus:outline-none" id="mobile-menu-button">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+            
+            <!-- Mobile menu -->
+            <div id="mobile-menu" class="hidden md:hidden py-4">
+                <div class="flex flex-col space-y-4">
+                    <a href="#home" class="nav-link">Home</a>
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#skills" class="nav-link">Skills</a>
+                    <a href="#projects" class="nav-link">Projects</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="gradient-bg min-h-screen flex items-center justify-center text-white pt-16">
+        <div class="max-w-6xl mx-auto px-4 py-20 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0 animate-fadeIn">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4">Hi, I'm <span class="text-blue-200">Shakoor Baloch</span></h1>
+                <h2 class="text-2xl md:text-3xl mb-6">Full Stack Developer</h2>
+                <p class="text-lg mb-8">I build exceptional digital experiences that make people's lives easier.</p>
+                <div class="flex space-x-4">
+                    <a href="#projects" class="bg-white text-blue-600 px-6 py-3 rounded-full font-semibold hover:bg-blue-50 transition duration-300">View My Work</a>
+                    <a href="#contact" class="border-2 border-white px-6 py-3 rounded-full font-semibold hover:bg-white hover:text-blue-600 transition duration-300">Contact Me</a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center animate-fadeIn delay-200">
+    <div class="relative rounded-full overflow-hidden animate-float">
+        <!-- Use correct relative path to your local image -->
+        <img src="https://scontent.fisb7-1.fna.fbcdn.net/v/t39.30808-6/468421710_1257841388670277_3032089461590323261_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeHIZKD6T6yijbfQKCoLiEwiP77anubiuBM_vtqe5uK4E9M7S3BIpwSpS1p_ru6LmfCcNVx7vUMwe2pjM_C6_jmP&_nc_ohc=-Y4ZbTW_I8YQ7kNvwGNnoCA&_nc_oc=Adl_w68LghKUKOzwUcmVSRxYdy_hDr397fg__irWD0_YyrxJL0Q-8XuQYYERjsxJnYg&_nc_zt=23&_nc_ht=scontent.fisb7-1.fna&_nc_gid=izH2E2LDcVL2FguNKR1e0Q&oh=00_AfIvOl_NGrZEXCoCZ8q6QaI3r53sMzohGf_gSuzEEzuhpg&oe=682E3CB8" alt="Shakoor Baloch" class="profile-img">
+    </div>
+</div>
+   </div>
+        </div>
+        
+        <!-- Scroll down indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <a href="#about" class="text-white text-2xl">
+                <i class="fas fa-chevron-down"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 animate-fadeIn">About <span class="text-blue-500">Me</span></h2>
+            
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/3 mb-10 md:mb-0 flex justify-center animate-fadeIn delay-100">
+                    <div class="relative rounded-lg overflow-hidden shadow-xl">
+                        <!-- Replace with your actual about image -->
+                        <img src="https://scontent.fisb7-1.fna.fbcdn.net/v/t39.30808-6/472935574_1280725016381914_6871813767207013940_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeGNPXPBiUd_0CW8j1IfkcE58q8hUgEp8dHyryFSASnx0Z_8T5BTiJv3aC5X99WRSdf-fDCwO_iAj5Fwv4alOxMJ&_nc_ohc=uBb8QrE3M6gQ7kNvwFgYrb7&_nc_oc=AdmQMCCUpi8Hym8qY9HO363bxf4SDDEMshCVK4u0tvs-cCfHJA3_GzmSajLHWUZpV-w&_nc_zt=23&_nc_ht=scontent.fisb7-1.fna&_nc_gid=1jTYHZUgRJnXM7YsxkM9kw&oh=00_AfKb13W6hZiDO_dtRTsZBf37mkGlEfW3INBryPpaoeOYjw&oe=682E2C45"
+                             alt="Shakoor Baloch working" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                
+                <div class="md:w-2/3 md:pl-12 animate-fadeIn delay-200">
+                    <h3 class="text-2xl font-semibold mb-4">Who am I?</h3>
+                    <p class="text-lg mb-6">
+                        I'm a passionate Full Stack Developer based in Quetta with 3 years of professional experience. 
+                        I specialize in creating responsive, user-friendly web applications using modern technologies.
+                        My journey in web development started when I was just 15 years old, and I've been in love with 
+                        coding ever since.
+                    </p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                        <div>
+                            <p class="font-semibold">Name: <span class="font-normal ml-2">Shakoor Baloch</span></p>
+                            <p class="font-semibold">Age: <span class="font-normal ml-2">23</span></p>
+                            <p class="font-semibold">Email: <span class="font-normal ml-2">Shakoorb845@gmail.com</span></p>
+                        </div>
+                        <div>
+                            <p class="font-semibold">From: <span class="font-normal ml-2">Quetta, Balochistan</span></p>
+                            <p class="font-semibold">Freelance: <span class="font-normal ml-2">Available</span></p>
+                            <p class="font-semibold">Phone: <span class="font-normal ml-2">+923051547969</span></p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#" class="bg-blue-500 text-white px-6 py-2 rounded-full hover:bg-blue-600 transition duration-300 flex items-center">
+                            <i class="fas fa-download mr-2"></i> Download CV
+                        </a>
+                        <a href="#contact" class="border-2 border-blue-500 text-blue-500 px-6 py-2 rounded-full hover:bg-blue-50 transition duration-300 flex items-center">
+                            <i class="fas fa-paper-plane mr-2"></i> Hire Me
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 animate-fadeIn">My <span class="text-blue-500">Skills</span></h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="animate-fadeIn delay-100">
+                    <h3 class="text-2xl font-semibold mb-6">Technical Skills</h3>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium">HTML/CSS</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="skill-bar bg-blue-500 h-2.5 rounded-full" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium">JavaScript</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="skill-bar bg-blue-500 h-2.5 rounded-full" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium">React</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="skill-bar bg-blue-500 h-2.5 rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium">Node.js</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="skill-bar bg-blue-500 h-2.5 rounded-full" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="animate-fadeIn delay-200">
+                    <h3 class="text-2xl font-semibold mb-6">Professional Skills</h3>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium">Communication</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="skill-bar bg-blue-500 h-2.5 rounded-full" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium">Teamwork</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="skill-bar bg-blue-500 h-2.5 rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium">Problem Solving</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="skill-bar bg-blue-500 h-2.5 rounded-full" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium">Creativity</span>
+                                <span>88%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="skill-bar bg-blue-500 h-2.5 rounded-full" style="width: 88%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-16 animate-fadeIn delay-300">
+                <h3 class="text-2xl font-semibold mb-8 text-center">Technologies I Work With</h3>
+                <div class="flex flex-wrap justify-center gap-8">
+                    <div class="flex flex-col items-center">
+                        <div class="w-16 h-16 bg-white rounded-full shadow-md flex items-center justify-center mb-2">
+                            <i class="fab fa-html5 text-3xl text-orange-500"></i>
+                        </div>
+                        <span>HTML5</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="w-16 h-16 bg-white rounded-full shadow-md flex items-center justify-center mb-2">
+                            <i class="fab fa-css3-alt text-3xl text-blue-500"></i>
+                        </div>
+                        <span>CSS3</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="w-16 h-16 bg-white rounded-full shadow-md flex items-center justify-center mb-2">
+                            <i class="fab fa-js text-3xl text-yellow-500"></i>
+                        </div>
+                        <span>JavaScript</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="w-16 h-16 bg-white rounded-full shadow-md flex items-center justify-center mb-2">
+                            <i class="fab fa-react text-3xl text-blue-400"></i>
+                        </div>
+                        <span>React</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="w-16 h-16 bg-white rounded-full shadow-md flex items-center justify-center mb-2">
+                            <i class="fab fa-node-js text-3xl text-green-500"></i>
+                        </div>
+                        <span>Node.js</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="w-16 h-16 bg-white rounded-full shadow-md flex items-center justify-center mb-2">
+                            <i class="fab fa-github text-3xl text-orange-600"></i>
+                        </div>
+                        <span>Git</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="w-16 h-16 bg-white rounded-full shadow-md flex items-center justify-center mb-2">
+                            <i class="fab fa-bootstrap text-3xl text-purple-500"></i>
+                        </div>
+                        <span>Bootstrap</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="w-16 h-16 bg-white rounded-full shadow-md flex items-center justify-center mb-2">
+                            <i class="fas fa-database text-3xl text-blue-600"></i>
+                        </div>
+                        <span>MongoDB</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 animate-fadeIn">My <span class="text-blue-500">Projects</span></h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card bg-white rounded-xl overflow-hidden shadow-lg transition-all duration-300 animate-fadeIn delay-100">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                             alt="E-commerce Platform" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">E-commerce Platform</h3>
+                        <p class="text-gray-600 mb-4">A full-featured online store with cart functionality, user authentication, and payment processing.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">React</span>
+                            <span class="bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full">Node.js</span>
+                            <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">MongoDB</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-blue-500 hover:text-blue-700">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                            <a href="#" class="text-gray-500 hover:text-gray-700">
+                                <i class="fab fa-github"></i> Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card bg-white rounded-xl overflow-hidden shadow-lg transition-all duration-300 animate-fadeIn delay-200">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                             alt="Task Management App" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Task Management App</h3>
+                        <p class="text-gray-600 mb-4">A productivity application for organizing tasks with drag-and-drop functionality and team collaboration.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">Vue.js</span>
+                            <span class="bg-yellow-100 text-yellow-800 text-xs px-3 py-1 rounded-full">Firebase</span>
+                            <span class="bg-red-100 text-red-800 text-xs px-3 py-1 rounded-full">Tailwind CSS</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-blue-500 hover:text-blue-700">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                            <a href="#" class="text-gray-500 hover:text-gray-700">
+                                <i class="fab fa-github"></i> Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card bg-white rounded-xl overflow-hidden shadow-lg transition-all duration-300 animate-fadeIn delay-300">
+                    <div class="h-48 overflow-hidden">
+                        <img src="data:image/jpeg;base64,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"
+                             alt="Weather Dashboard" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Weather Dashboard</h3>
+                        <p class="text-gray-600 mb-4">Real-time weather information with 5-day forecast, location search, and interactive maps.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">JavaScript</span>
+                            <span class="bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full">API</span>
+                            <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">Chart.js</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-blue-500 hover:text-blue-700">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                            <a href="#" class="text-gray-500 hover:text-gray-700">
+                                <i class="fab fa-github"></i> Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12 animate-fadeIn delay-400">
+                <a href="#" class="inline-block bg-blue-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-600 transition duration-300">
+                    View All Projects <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 animate-fadeIn">Get In <span class="text-blue-500">Touch</span></h2>
+            
+            <div class="flex flex-col md:flex-row gap-12">
+                <div class="md:w-1/2 animate-fadeIn delay-100">
+                    <h3 class="text-2xl font-semibold mb-6">Contact Information</h3>
+                    <p class="mb-8">
+                        Feel free to reach out to me for any questions or opportunities. 
+                        I'm always open to discussing new projects, creative ideas or 
+                        opportunities to be part of your vision.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-map-marker-alt text-blue-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Location</h4>
+                                <p>Balochistan Quetta</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-envelope text-blue-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Email</h4>
+                                <p>Shakoorb845@gmail.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-phone-alt text-blue-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Phone</h4>
+                                <p>+923051547969</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <h4 class="font-semibold mb-4">Follow Me</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="bg-blue-500 text-white p-3 rounded-full hover:bg-blue-600 transition duration-300">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="bg-blue-400 text-white p-3 rounded-full hover:bg-blue-500 transition duration-300">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="bg-gray-800 text-white p-3 rounded-full hover:bg-gray-900 transition duration-300">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="#" class="bg-pink-600 text-white p-3 rounded-full hover:bg-pink-700 transition duration-300">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2 animate-fadeIn delay-200">
+                    <h3 class="text-2xl font-semibold mb-6">Send Me a Message</h3>
+                    <form class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block mb-2 font-medium">Your Name</label>
+                                <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Shakoor Baloch">
+                            </div>
+                            <div>
+                                <label for="email" class="block mb-2 font-medium">Your Email</label>
+                                <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="shakoorb845@gmail.com">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="subject" class="block mb-2 font-medium">Subject</label>
+                            <input type="text" id="subject" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Project Inquiry">
+                        </div>
+                        <div>
+                            <label for="message" class="block mb-2 font-medium">Message</label>
+                            <textarea id="message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Hello Shakoor, I'd like to discuss..."></textarea>
+                        </div>
+                        <button type="submit" class="bg-blue-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-600 transition duration-300 w-full md:w-auto">
+                            Send Message <i class="fas fa-paper-plane ml-2"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="#" class="text-2xl font-bold text-blue-400">Shakoor Baloch</a>
+                    <p class="mt-2">Full Stack Developer</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="hover:text-blue-400 transition duration-300">
+                        <i class="fab fa-linkedin-in text-xl"></i>
+                    </a>
+                    <a href="#" class="hover:text-blue-400 transition duration-300">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    <a href="#" class="hover:text-blue-400 transition duration-300">
+                        <i class="fab fa-twitter text-xl"></i>
+                    </a>
+                    <a href="#" class="hover:text-blue-400 transition duration-300">
+                        <i class="fab fa-instagram text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p>&copy; 2023 Shakoor Baloch. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to top button -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 bg-blue-500 text-white p-3 rounded-full shadow-lg opacity-0 invisible transition-all duration-300">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+        
+        // Animate elements when they come into view
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.animate-fadeIn');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+            
+            // Back to top button
+            const backToTopButton = document.getElementById('back-to-top');
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+                backToTopButton.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopButton.classList.remove('opacity-100', 'visible');
+                backToTopButton.classList.add('opacity-0', 'invisible');
+            }
+        };
+        
+        // Initialize animations
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Back to top button
+        document.getElementById('back-to-top').addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Form submission
+        const contactForm = document.querySelector('form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your message! I will get back to you soon.');
+                this.reset();
+            });
+        }
+        
+        // Animate skill bars on scroll
+        const animateSkillBars = () => {
+            const skillBars = document.querySelectorAll('.skill-bar');
+            const skillsSection = document.getElementById('skills');
+            const sectionPosition = skillsSection.getBoundingClientRect().top;
+            const screenPosition = window.innerHeight / 1.3;
+            
+            if (sectionPosition < screenPosition) {
+                skillBars.forEach(bar => {
+                    const width = bar.style.width;
+                    bar.style.width = '0';
+                    setTimeout(() => {
+                        bar.style.width = width;
+                    }, 100);
+                });
+                
+                // Remove the event listener after animation
+                window.removeEventListener('scroll', animateSkillBars);
+            }
+        };
+        
+        window.addEventListener('scroll', animateSkillBars);
+    </script>
+</body>
+</html>
